@@ -47,7 +47,7 @@ $ yarn dev
 
 需要手动升级node版本，于是成功提示如下图：
 
-![img](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\1.png)
+![img](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/1.png)
 
 2. 依次执行命令：
 
@@ -59,13 +59,13 @@ $ yarn dev
 
 项目正式启动：
 
-![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\2.png)
+![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/2.png)
 
-![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\3.png)
+![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/3.png)
 
 3. 目录结构
 
-   ![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\4.png)
+   ![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/4.png)
 
 main.ts 文件：
 
@@ -132,7 +132,7 @@ vue3是由TS开发而成，typescript现在已经成为了前端必备技能之�
 
 4. 修改完之后，重启就可以访问项目了。虽然这样配置是可以了，但是打开main.ts会发现import App from App.vue会报错: Cannot find module './App.vue' or its corresponding type declarations.,这是因为现在ts还没有识别vue文件，需要进行下面的配置:
 
-   ![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\5.png)
+   ![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/4.png)
 
    1. 在项目根目录添加shim.d.ts文件
 
@@ -148,7 +148,7 @@ vue3是由TS开发而成，typescript现在已经成为了前端必备技能之�
 
 5. 启动：
 
-   ![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\6.png)
+   ![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/6.png)
 
 ## 四、配置vue-router
 
@@ -170,7 +170,7 @@ vue3是由TS开发而成，typescript现在已经成为了前端必备技能之�
    yarn add vue-router@4.0.0-alpha.14
    ```
 
-   ![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\7.png)
+   ![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/7.png)
 
 2. 配置vue-router
 
@@ -291,7 +291,7 @@ vue3是由TS开发而成，typescript现在已经成为了前端必备技能之�
 
 Vue Devtools 开发者工具，需要重新添加对应的beta版本才可以用来调试，否则无效。
 
-![](D:\zhaobeibei\vue3-demo\zock-vue3\src\assets\imgs\8.png)
+![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/8.png)
 
 ## 七、TodoList实例：
 
