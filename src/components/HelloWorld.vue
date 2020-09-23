@@ -1,15 +1,16 @@
 <template>
   <Frament>
     <h1>{{ msg }}</h1>
-    <button @click="count++">count is: {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test hot module replacement.
-    </p>
+    <van-button type="success" @click="count++"
+      >点击数字: {{ count }}</van-button
+    >
+    <p></p>
   </Frament>
 </template>
 
 <script lang="ts">
+import { Button } from "vant";
+
 export default {
   name: "HelloWorld",
   props: {
