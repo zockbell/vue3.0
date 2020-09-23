@@ -402,16 +402,61 @@ li {
 
    地址：https://element-plus.org/#/zh-CN/component/installation
 
-   以上组件，全部亲测，目前只有Vant3.0支持，其他全不支持，本项目使用vant3.0组件。
+   以上组件，全部亲测，目前只有Vant3.0支持，其他全不支持，本项目使用vant3.0组件。但目前部署到线上感觉样式并未加载，可能版本也不够稳定。
 
    > 由于目前所有功能全不稳定，所以采用导入所有组件
 
 ## 九、Composition API 组合式api
 
-官网介绍：https://composition-api.vuejs.org/zh/
+这里内容实在过多，推荐官网：https://composition-api.vuejs.org/zh/
 
-我们为单文件组件提出了**两个新特性**[18]（SFC，又称为 `.vue` 文件）:
+我们为单文件组件提出了**两个新特性**[18]（SFC，又称为 `.vue` 单文件组件）:
 
 <script setup>：在 SFC 内使用 Composition API 的语法糖
 <style vars>：在 SFC 中支持将状态作为 CSS 变量注入到样式中
+## 十、nginx部署
+
+本系统demo：http://49.232.200.171/
+
+由于3.0.0-beta.0版本还未正式发布，所以部署到线上样式有问题，下图为开发环境
+
+![1600850216830](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/10.png)
+
+## 十一、 体验总结
+
+正如官网所说：
+
+> ⚠️ Beta Version: Docs are in development and subject to change.
+
+这句话没有错，体验的过程中我的windows系统并没有感受到vite如官网所说的轻和快，另外vite的热更新有bug，不会及时响应页面渲染视图。比如此项目构建用了不到8秒
+
+![](https://github.com/zockbell/vue3.0/blob/master/src/assets/imgs/9.png)
+
+1. 目前所有的版本都在逐渐完善，相信vue3.0稳定版一定会给到我们最大惊喜。
+
+2. 各UI组件库也在不断完善中，暂时不稳定
+
+3. 在github中并未找到 [vite](https://github.com/vitejs/vite#config-file) 的打包路径，默认部署css和js出错
+
+   现部署nginx配置为：
+
+   ```nginx
+   location / {
+               root /opt/home/dist;
+               index index.html;
+               try_files $uri $uri/ /index.html;         
+           }
+   ```
+
+   
+
+4. 配套的`vue-router`版本是：`4.0.0-alpha.14`
+
+   `vuex`版本是：`4.0.0-beta.4`
+
+   都不是稳定版本。
+
+   
+
+
 
