@@ -396,6 +396,8 @@ Vue Devtools 开发者工具，需要重新添加对应的 beta 版本才可以�
 
 这里内容实在过多，推荐官网：https://composition-api.vuejs.org/zh/
 
+> https://v3.cn.vuejs.org/api/composition-api.html
+
 我们为单文件组件提出了**两个新特性**[18]（SFC，又称为 `.vue` 单文件组件）:
 
 ```
@@ -825,6 +827,96 @@ export default {
 }
 </script>
 ```
+
+---
+
+**9.响应式数据、methods、watch 和 computed**
+在 vue2 版本中，我们声明响应式数据是这样的：
+
+```
+// Vue2
+export default {
+  // ....
+  data() {
+    return {
+      state: {
+        count: 0
+      }
+    };
+  },
+}
+```
+
+在 vue3.0 中，需要这样：
+
+```
+// Vue3
+import { ref } from 'vue'
+export default {
+  setup () {
+    const count = ref(0) // 声明 count，初始值为 0
+    const str = ref('hello') // 声明 str，初始值为 'hello'
+    return {
+      count,
+      str
+    }
+  }
+}
+```
+
+> 要先引入 ref 方法，然后使用它来声明响应式变量。重要的是，这些操作需要在 setup 函数中进行，而且添加 methods，watch 和 computed 都需要在 setup 中进行。这就跟在 vue2 中有很大的不同，vue2 中我们是使用选项的方式来创建 data、methods、watch 和 computed 的。
+
+接下来演示一个计数器的功能，结合 methods、watch 和 computed：
+
+```
+<template>
+  <div class="home">
+   <p>count: {{count}}</p>
+   <p>doubleCount: {{doubleCount}}</p>
+   <button @click="add">增加</button>
+  </div>
+</template>
+
+<script>
+import { ref, watch, computed } from 'vue'
+export default {
+  setup () {
+    // 声明 count 变量，初始值为 0
+    const count = ref(0)
+
+    // 定义 add 方法
+    const add = () => {
+      count.value++
+    }
+
+    // 定义 watch，需要手动引入 watch 方法
+    watch(
+      () => count.value,
+      (val, oldVal) => { console.log(`new count: ${val}，old count: ${oldVal}`) }
+    )
+
+    // 定义computed，同样需要手动引入 computed 方法
+    const doubleCount = computed(() => count.value * 2)
+
+    return {
+      count,
+      add,
+      doubleCount
+    }
+  }
+}
+</script>
+```
+
+这个例子，首先定义方法是可以直接定义在 setup 函数中的，然后 return 出去即可，不知可否注意到在方法里访问 count 时，是使用 .value 方法访问的，这里要强调一下，在 setup 中访问已声明的响应式变量时，需要使用 .value 方式访问，包括在 watch 和 computed 中。
+
+接下来是定义 watch，需要手动引入 watch 方法，这也是达到了 Tree-Shaking 的目的，使用到什么就引入什么，最后打包也只打包用到的 api，后面的 computed 也同理。
+
+watch 方法有两个参数，都是函数，第一个函数返回要监听的值，第二个函数是回调函数，它两个参数分别表示新值和旧值。
+
+computed 方法返回计算过的值，最后需要 return 出去。用法如上，还是比较好理解的。
+
+---
 
 ## 十、nginx 部署
 
